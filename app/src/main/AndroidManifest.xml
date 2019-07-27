@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".provider.ProviderActivity">
+        <activity android:name=".xpopup.XPopupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,15 +17,33 @@
             </intent-filter>
         </activity>
         <activity android:name=".aidl.BookManagerActivity"/>
-
+        <activity android:name=".slide.SlideActivity"/>
+        <activity android:name=".notification.Test1Activity"/>
+        <activity android:name=".notification.Test2Activity"/>
+        <activity android:name=".remote_views.Activity_B"
+            android:process=":chen"/>
 
         <service android:name=".aidl.BookManagerService"
             android:process=":service"/>
+        <service android:name=".intent_service.MyIntentService"/>
 
         <provider
             android:authorities="com.chen.fy.test2.book.provider"
             android:name=".provider.BookProvider"
             android:process=":provider"/>
+
+        <receiver android:name=".widget_provider.MyWidgetProvider"
+            android:enabled="true"
+            android:exported="true">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider">
+            </meta-data>
+            <intent-filter>
+                <action android:name="com.chen.action_CLICK"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
 
     </application>
 
